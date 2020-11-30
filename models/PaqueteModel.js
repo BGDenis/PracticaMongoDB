@@ -15,11 +15,12 @@ const PaqueteSchema = Schema({
     descripcion: {
         type: String,
     },
-    /*camionero: {
+   
+    camionero: {
         type: Schema.Types.ObjectId,
         ref: 'Camionero',
-        required: true
-    },*/
+        required: false
+    },
    destino:{
         type: Schema.Types.ObjectId,
         ref: 'Destino',
@@ -34,10 +35,10 @@ PaqueteSchema.method('toJSON', function () {
     //la base de datos seguira igual
     const {
         __v,
-        ...object
+       ...object
     } = this.toObject();
     return object;
 })
 
 //para poder exponer esta definicion  para que pueda ser utilizado desde fuera
-module.exports = model('Paquete', PaqueteSchema);
+module.exports = model('Paquete',PaqueteSchema);

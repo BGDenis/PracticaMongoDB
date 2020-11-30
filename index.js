@@ -7,6 +7,9 @@ const cors = require('cors');
 const {
     dbconection
 } = require('./database/config'); //no requiere la extension .js
+const {
+    response
+} = require('express');
 //Crear el servidor express
 const app = express();
 
@@ -23,12 +26,15 @@ app.use(express.json());
 dbconection();
 //console.log(process.env);
 
+app.use(express.static('public'));
 //rutas del API
 
 app.use('/api/usuarios', require('./routes/usuariosRoute'));
 app.use('/api/login', require('./routes/authRoute'));
+app.use('/api/login/google', require('./routes/authRoute'));
 
 app.use('/api/camiones', require('./routes/camionesRute'));
+//app.use('/api/camiones/:id', require('./routes/camionesRute'));
 app.use('/api/destinos', require('./routes/destinoRute'));
 app.use('/api/camioneros', require('./routes/camioneroRoute'));
 app.use('/api/paquetes', require('./routes/paquetesRoute'));

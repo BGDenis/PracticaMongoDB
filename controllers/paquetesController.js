@@ -7,14 +7,24 @@ const {
 const Paquete = require('../models/PaqueteModel');
 
 const getPaquete = async (req, res = response) => {
-    const paquete = await Paquete.find().populate("destino","ciudad codCiudad");
+    const paquete = await Paquete.find()/*.populate("destino","ciudad codCiudad")*/;
     /*populate('camionero', 'nombre telefono').
     populate('destino', 'ciudad');*/
-    res.json({
-        ok: true,
-        paquete
-    });
+    res.json(
+       // ok: true,
+       paquete
+    );
 }
+
+const getPaqueteId = async (req, res = response) => {
+    const id = req.params.id;
+    const paquete = await Paquete.findById(id);
+    res.json(
+        //ok: true,
+        paquete
+    );
+}
+
 const crearPaquete = async (req, res = response) => {
     const uid = req.uid;
     const paquete = new Paquete({
@@ -99,5 +109,6 @@ module.exports = {
     getPaquete,
     crearPaquete,
     actualizarPaquete,
-    eliminarPaquete
+    eliminarPaquete,
+    getPaqueteId
 }

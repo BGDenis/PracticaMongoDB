@@ -23,18 +23,20 @@ const router = Router();
 router.get('/', getCamionero);
 
 router.post('/', [
-    validarJWT,
+    //validarJWT,
     check('nombre', 'El nombre del camionero es obligatorio').not().isEmpty(),
     validarCampos
 ], crearCamioneros);
 
 router.put('/:id', [
-        validarJWT,
-        check('nombre', 'El nombre del investigador es obligatorio').not().isEmpty(),
+        //validarJWT,
+        check('nombre', 'El nombre del camionero es obligatorio').not().isEmpty(),
         validarCampos
     ],
     actualizarCamionero);
 
-router.delete('/:id', validarJWT, eliminarCamionero);
+router.delete('/:id',
+    /*validarJWT*/
+    eliminarCamionero);
 
 module.exports = router;

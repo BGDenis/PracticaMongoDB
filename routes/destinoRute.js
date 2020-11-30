@@ -23,20 +23,22 @@ const router = Router();
 router.get('/', getDestinos);
 
 router.post('/', [
-        validarJWT,
+        // validarJWT,
         // check('paquete', 'El id del paquete debe ser valido').isMongoId(),
         validarCampos
     ],
     crearDestino);
 
 router.put('/:id', [
-        validarJWT,
+        //validarJWT,
         //check('paquete', 'El id del paquete debe ser valido').isMongoId(),
         validarCampos
     ],
     actualizarDestino);
 
-router.delete('/:id', validarJWT, eliminarDestino);
+router.delete('/:id',
+    // validarJWT,
+    eliminarDestino);
 
 
 

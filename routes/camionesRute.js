@@ -15,29 +15,32 @@ const {
     getCamiones,
     actualizarCamion,
     eliminarCamion,
-    crearCamion
+    crearCamion,
+    getCamionesId
 } = require('../controllers/caminoesController');
 
 const router = Router();
 
 router.get('/', getCamiones);
 
+router.get('/:id', getCamionesId);
+
 router.post('/', [
-        validarJWT,
+        // validarJWT,
         check('placa', 'La placa es obligatorio').not().isEmpty(),
         validarCampos
     ],
     crearCamion);
 
 router.put('/:id', [
-        validarJWT,
-        check('Placa', 'La placa es obligatorio').not().isEmpty(),
+        //validarJWT,
+       // check('Placa', 'La placa es obligatorio').not().isEmpty(),
         validarCampos
     ],
     actualizarCamion);
-    
+
 router.delete('/:id',
-    validarJWT,
+    // validarJWT,
     eliminarCamion);
 
 module.exports = router; //para exportar

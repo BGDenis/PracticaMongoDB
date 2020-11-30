@@ -3,13 +3,15 @@ const {
 } = require('express');
 const Camionero = require('../models/CamioneroModel');
 
+
 const getCamionero = async (req, res = response) => {
     const camioneros = await Camionero.find().
     populate('usuario', 'nombre img').populate('camion', 'placa modelo');
-    res.json({
-        ok: true,
-        camioneros
-    });
+    
+    res.json(
+ //       ok: true,
+        camioneros,
+    );
 }
 const crearCamioneros = async (req, res = response) => {
     const uid = req.uid;

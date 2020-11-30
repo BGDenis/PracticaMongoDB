@@ -1,10 +1,26 @@
-const { Router } = require('express');
-const { check } = require('express-validator');
-const { login, renewToken } = require('../controllers/authController');
-const { validarCampos } = require('../midlewares/validarCampos');
-const { validarJWT } = require('../midlewares/validarJWT');
-
-
+const {
+    Router
+} = require('express');
+const {
+    check
+} = require('express-validator');
+const {
+    login,
+    renewToken
+} = require('../controllers/authController');
+const {
+    validarCampos
+} = require('../midlewares/validarCampos');
+const {
+    validarJWT
+} = require('../midlewares/validarJWT');
+///////
+/*const {
+    login,
+    googleSignIn,
+    renewToken
+} = require('../controllers/authController');
+*/
 const router = Router();
 
 router.post('/', [
@@ -19,5 +35,11 @@ router.get('/renew',
     validarJWT,
     renewToken);
 
-
+////////
+/*
+router.post('/google', [
+    check('token', 'El token es obligatorio').not().isEmpty(),
+    validarCampos
+], googleSingIn);
+*/
 module.exports = router;

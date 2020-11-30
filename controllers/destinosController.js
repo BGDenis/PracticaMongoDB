@@ -5,10 +5,10 @@ const Destino = require('../models/DestinoModel');
 
 const getDestinos = async (req, res = response) => {
     const destinos = await Destino.find().populate('paquete', 'destinatario');
-    res.json({
-        ok: true,
+    res.json(
+       // ok: true,
         destinos
-    });
+    );
 }
 
 const crearDestino = async (req, res = response) => {

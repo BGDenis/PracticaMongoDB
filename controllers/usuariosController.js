@@ -22,12 +22,12 @@ const getUsuarios = async(req, res) => {
         Usuario.countDocuments()
     ]);
 
-    res.json({
-        ok: true,
-        msg: 'obtener usuarios',
+    res.json(
+        /*ok: true,
+        msg: 'obtener usuarios',*/
         usuarios,
         total
-    });
+    );
 }
 
 const crearUsuario = async(req, res = response) => {

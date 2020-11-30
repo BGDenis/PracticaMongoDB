@@ -5,12 +5,19 @@ const Camion = require('../models/CamionModel');
 
 const getCamiones = async (req, res = response) => {
     const camiones = await Camion.find().
-    populate('usuario', 'nombre img').
-    populate('proyecto', 'nombre img');
-    res.json({
-        ok: true,
+    populate('usuario', 'nombre img');
+    res.json(
+        //ok: true,
         camiones
-    });
+    );
+}
+const getCamionesId = async (req, res = response) => {
+    const id = req.params.id;
+    const camiones = await Camion.findById(id);
+    res.json(
+        //ok: true,
+        camiones
+    );
 }
 
 const crearCamion = async (req, res = response) => {
@@ -48,7 +55,6 @@ const actualizarCamion = async (req, res = response) => {
             return res.status(404).json({
                 ok: true,
                 msg: 'Camion no existe'
-
             });
         }
 
@@ -56,7 +62,6 @@ const actualizarCamion = async (req, res = response) => {
             ...req.body,
             usuario: uid
         }
-
         const camionActualizado = await Camion.findByIdAndUpdate(id, cambiosCamion, {
             new: true
         });
@@ -64,7 +69,6 @@ const actualizarCamion = async (req, res = response) => {
         return res.json({
             ok: true,
             camion: camionActualizado
-
         });
 
 
@@ -103,5 +107,6 @@ module.exports = {
     getCamiones,
     crearCamion,
     actualizarCamion,
-    eliminarCamion
+    eliminarCamion,
+    getCamionesId
 }

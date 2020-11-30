@@ -6,7 +6,7 @@ const {
 const CamionSchema = Schema({
     placa: {
         type: String,
-        required: true
+        required: false
     },
     modelo: {
         type: String
