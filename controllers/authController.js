@@ -52,8 +52,6 @@ const login = async (req, res = response) => {
 
 
 }
-
-
 const renewToken = async (req, res = response) => {
 
     const uid = req.uid;
@@ -64,19 +62,18 @@ const renewToken = async (req, res = response) => {
         token
     });
 }
-
-
-module.exports = {
-    login,
-    renewToken
-}
-
-const googleSingIn = async(req, res = response) => {
+const googleSingIn = async (req, res = response) => {
     const googletoken = req.body.token;
     try {
-        const { name, email, picture } = await googleVerify(googletoken);
+        const {
+            name,
+            email,
+            picture
+        } = await googleVerify(googletoken);
 
-        const usuarioDB = await Usuario.findOne({ email });
+        const usuarioDB = await Usuario.findOne({
+            email
+        });
 
         let usuario;
         if (!usuarioDB) {
@@ -104,4 +101,10 @@ const googleSingIn = async(req, res = response) => {
             msg: 'token incorrecto'
         });
     }
+}
+
+module.exports = {
+    login,
+    renewToken,
+    googleSingIn,
 }

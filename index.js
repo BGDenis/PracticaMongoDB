@@ -34,11 +34,9 @@ app.use('/api/login', require('./routes/authRoute'));
 app.use('/api/login/google', require('./routes/authRoute'));
 
 app.use('/api/camiones', require('./routes/camionesRute'));
-//app.use('/api/camiones/:id', require('./routes/camionesRute'));
 app.use('/api/destinos', require('./routes/destinoRute'));
 app.use('/api/camioneros', require('./routes/camioneroRoute'));
 app.use('/api/paquetes', require('./routes/paquetesRoute'));
-
 
 app.listen(process.env.PORT, () => {
     console.log('Servidor corriendo en el puerto ' + process.env.PORT);
